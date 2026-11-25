@@ -47,31 +47,37 @@ OpenCore boot EFI for the **Xiaomi Notebook Pro 15 OLED 2021** (TM2107 / Timi A3
 -FIPeriodic itlwm_he=1 -btlfxallowanyaddr -btlfxboardid -NRedDPDelay -NRedOLED -NRedDarkWakeFix darkwake=0
 ```
 
-## Kext list
+## Kext list & upstream
 
-| Kext | Bundle | Version |
-|---|---|---|
-| Lilu | as.vit9696.Lilu | 1.7.3 |
-| VirtualSMC | as.vit9696.VirtualSMC | 1.3.9 |
-| SMCBatteryManager | ru.usrsse2.SMCBatteryManager | 1.3.9 |
-| SMCProcessorAMD | as.lorys89.SMCProcessorAMD | 1.0.4 |
-| NootedRed | org.ChefKiss.NootedRed | 1.3.1 |
-| AppleALC | as.vit9696.AppleALC | 1.9.9 |
-| FeatureUnlock | com.khronokernel.FeatureUnlock | 1.1.9 |
-| RestrictEvents | as.vit9696.RestrictEvents | 1.1.7 |
-| BrightnessKeys | as.acidanthera.BrightnessKeys | — |
-| BlueToolFixup | as.acidanthera.BlueToolFixup | 2.7.6 |
-| IntelBTPatcher | com.zxystd.IntelBTPatcher | 2.5.3 |
-| IntelBluetoothFirmware | com.zxystd.IntelBluetoothFirmware | 2.5.3 |
-| ForgedInvariant | org.ChefKiss.ForgedInvariant | 1.6.0 |
-| AirportItlwm (Sequoia) | com.zxystd.AirportItlwm | 2.4.0 |
-| VoodooGPIO / VoodooI2C / VoodooI2CHID / VoodooInput | com.alexandred.* | 2.9.1 / 1.0 |
-| VoodooPS2Controller | as.acidanthera.voodoo.driver.PS2Controller | 2.3.8 |
-| AMDSFHALSPlugin / AMDSFHLightSensor | com.local.* | 1.0.0 |
-| USBMap | com.dhinakg.USBToolBox.map | 1.1 |
-| AppleMCEReporterDisabler | org.xlnc.disabler.MCEReporter | — |
+| Kext | Version | Upstream | License |
+|---|---|---|---|
+| Lilu | 1.7.3 | [acidanthera/Lilu](https://github.com/acidanthera/Lilu) | See upstream |
+| VirtualSMC | 1.3.9 | [acidanthera/VirtualSMC](https://github.com/acidanthera/VirtualSMC) | See upstream |
+| SMCBatteryManager | 1.3.9 | [acidanthera/VirtualSMC](https://github.com/acidanthera/VirtualSMC) | See upstream |
+| SMCProcessorAMD | 1.0.4 | [lorys89/SMCProcessorAMD](https://github.com/lorys89/SMCProcessorAMD) | See upstream |
+| NootedRed | 1.3.1 | [ChefKissInc/NootedRed](https://github.com/ChefKissInc/NootedRed) | See upstream |
+| AppleALC | 1.9.9 | [acidanthera/AppleALC](https://github.com/acidanthera/AppleALC) | See upstream |
+| FeatureUnlock | 1.1.9 | [acidanthera/FeatureUnlock](https://github.com/acidanthera/FeatureUnlock) | See upstream |
+| RestrictEvents | 1.1.7 | [acidanthera/RestrictEvents](https://github.com/acidanthera/RestrictEvents) | See upstream |
+| BrightnessKeys | — | [acidanthera/BrightnessKeys](https://github.com/acidanthera/BrightnessKeys) | See upstream |
+| BlueToolFixup | 2.7.6 | [acidanthera](https://github.com/acidanthera) (binary release) | See upstream |
+| IntelBTPatcher | 2.5.3 | [zxystd/IntelBTPatcher](https://github.com/zxystd/IntelBTPatcher) | See upstream |
+| IntelBluetoothFirmware | 2.5.3 | [zxystd/IntelBluetoothFirmware](https://github.com/zxystd/IntelBluetoothFirmware) | See upstream |
+| ForgedInvariant | 1.6.0 | [ChefKissInc/ForgedInvariant](https://github.com/ChefKissInc/ForgedInvariant) | See upstream |
+| AirportItlwm (Sequoia) | 2.4.0 | [zxystd/itlwm](https://github.com/zxystd/itlwm) | See upstream |
+| VoodooGPIO / VoodooI2C / VoodooI2CHID / VoodooInput | 2.9.1 / 1.0 | [alexandred/VoodooI2C](https://github.com/alexandred/VoodooI2C) | See upstream |
+| VoodooPS2Controller | 2.3.8 | [acidanthera](https://github.com/acidanthera) | See upstream |
+| AMDSFHALSPlugin / AMDSFHLightSensor | 1.0.0 | Local build (no public upstream) | — |
+| USBMap | 1.1 | [USBToolBox/kext](https://github.com/USBToolBox/kext) | See upstream |
+| AppleMCEReporterDisabler | — | Community (XLNC) | See upstream |
 
 > No WhateverGreen, no NVMeFix, no HibernationFixup in this setup.
+
+## License & attribution
+
+- This repository packages only the OpenCore configuration, ACPI SSDTs and prebuilt kext binaries for reference. All kext copyrights and trademarks belong to their respective authors.
+- Each kext's license (LGPL / BSD / MIT / GPL as applicable) is defined in its upstream repository linked above; this repo does not bundle the upstream LICENSE files.
+- The bundled NootedRed 1.3.1 is a fork build carrying an out-of-tree `-NRedDarkWakeFix` module; see the upstream repository for the canonical source.
 
 ## ACPI SSDTs
 
