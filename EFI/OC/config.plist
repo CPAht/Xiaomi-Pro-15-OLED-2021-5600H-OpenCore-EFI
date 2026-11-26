@@ -631,7 +631,7 @@
 				<key>BundlePath</key>
 				<string>NootedRed.kext</string>
 				<key>Comment</key>
-				<string>V1.3.1</string>
+				<string>V1.3.4</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -2295,7 +2295,7 @@
 				AAAAAAAAAAAAAAAAAAA=
 				</data>
 				<key>boot-args</key>
-				<string>-FIPeriodic itlwm_he=1 -btlfxallowanyaddr -btlfxboardid -NRedDPDelay -NRedOLED -NRedDarkWakeFix darkwake=0</string>
+				<string>-FIPeriodic itlwm_he=1 -btlfxallowanyaddr -btlfxboardid -NRedOLED darkwake=0</string>
 				<key>csr-active-config</key>
 				<data>
 				7w8AAA==

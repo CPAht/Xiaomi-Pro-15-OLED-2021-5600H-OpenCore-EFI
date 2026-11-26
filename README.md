@@ -24,7 +24,7 @@ OpenCore boot EFI for the **Xiaomi Notebook Pro 15 OLED 2021** (TM2107 / Timi A3
 |---|---|---|
 | **CPU** R5 5600H (Renoir) | CPU power management, SMC temp/freq, `plugin-type=1` | SMCProcessorAMD 1.0.4 · SSDT-PLUG-ALT · X86PlatformPlugin |
 | CPU | AMD CPU name spoof, core/topology patches, MCE reporter off | RestrictEvents 1.1.7 · algrey/XLNC CPUID & commpage patches · AppleMCEReporterDisabler |
-| **iGPU** Radeon Renoir `0x1638` | Graphics acceleration, Metal 3, internal framebuffer | NootedRed 1.3.1 · Lilu 1.7.3 · FeatureUnlock 1.1.9 |
+| **iGPU** Radeon Renoir `0x1638` | Graphics acceleration, Metal 3, internal framebuffer | NootedRed 1.3.4 (upstream build) · Lilu 1.7.3 · FeatureUnlock 1.1.9 |
 | iGPU | Internal panel EDID override | DeviceProperties `AAPL00,override-no-connect` on `PciRoot(0x1)/Pci(0x8,0x1)/Pci(0x0,0x0)` |
 | **OLED panel** | Brightness slider, AUX nits backlight path | NootedRed AUX nits · SSDT-PNLF · boot-arg `-NRedOLED` |
 | Brightness hotkeys | Fn brightness keys | BrightnessKeys 1.0.4 · SSDT-PNLF |
@@ -44,7 +44,7 @@ OpenCore boot EFI for the **Xiaomi Notebook Pro 15 OLED 2021** (TM2107 / Timi A3
 ## Boot-args
 
 ```
--FIPeriodic itlwm_he=1 -btlfxallowanyaddr -btlfxboardid -NRedDPDelay -NRedOLED -NRedDarkWakeFix darkwake=0
+-FIPeriodic itlwm_he=1 -btlfxallowanyaddr -btlfxboardid -NRedOLED darkwake=0
 ```
 
 ## Kext list & upstream
@@ -55,7 +55,7 @@ OpenCore boot EFI for the **Xiaomi Notebook Pro 15 OLED 2021** (TM2107 / Timi A3
 | VirtualSMC | 1.3.9 | [acidanthera/VirtualSMC](https://github.com/acidanthera/VirtualSMC) | See upstream |
 | SMCBatteryManager | 1.3.9 | [acidanthera/VirtualSMC](https://github.com/acidanthera/VirtualSMC) | See upstream |
 | SMCProcessorAMD | 1.0.4 | [lorys89/SMCProcessorAMD](https://github.com/lorys89/SMCProcessorAMD) | See upstream |
-| NootedRed | 1.3.1 | [ChefKissInc/NootedRed](https://github.com/ChefKissInc/NootedRed) | See upstream |
+| NootedRed | 1.3.4 | [ChefKissInc/NootedRed](https://github.com/ChefKissInc/NootedRed) | See upstream |
 | AppleALC | 1.9.9 | [acidanthera/AppleALC](https://github.com/acidanthera/AppleALC) | See upstream |
 | FeatureUnlock | 1.1.9 | [acidanthera/FeatureUnlock](https://github.com/acidanthera/FeatureUnlock) | See upstream |
 | RestrictEvents | 1.1.7 | [acidanthera/RestrictEvents](https://github.com/acidanthera/RestrictEvents) | See upstream |
@@ -77,7 +77,7 @@ OpenCore boot EFI for the **Xiaomi Notebook Pro 15 OLED 2021** (TM2107 / Timi A3
 
 - This repository packages only the OpenCore configuration, ACPI SSDTs and prebuilt kext binaries for reference. All kext copyrights and trademarks belong to their respective authors.
 - Each kext's license (LGPL / BSD / MIT / GPL as applicable) is defined in its upstream repository linked above; this repo does not bundle the upstream LICENSE files.
-- The bundled NootedRed 1.3.1 is a fork build carrying an out-of-tree `-NRedDarkWakeFix` module; see the upstream repository for the canonical source.
+- The bundled NootedRed 1.3.4 is a clean build from the upstream ChefKissInc master (no out-of-tree patches); see the upstream repository for the canonical source.
 
 ## ACPI SSDTs
 
@@ -92,7 +92,7 @@ OpenCore boot EFI for the **Xiaomi Notebook Pro 15 OLED 2021** (TM2107 / Timi A3
 
 - OLED brightness works through the AUX nits path; `-NRedOLED` forces `supportsAUX` on.
 - S3/AC sleep wake-on-lid verified once after a long AC sleep on 15.8.3; long-inactive GPU black-screen recovery on Renoir remains the main risk and is not fully resolved upstream.
-- `NRedDarkWakeFix` is an out-of-tree fork module bundled in this 1.3.1 build (wake liveness probe + retry re-power); it is not part of the upstream master.
+- NootedRed here tracks the clean upstream master; the earlier out-of-tree wake-probe hook and its `-NRedDarkWakeFix` / `-NRedDPDelay` boot-args have been removed.
 - Audio, Wi‑Fi (itlwm), Bluetooth, keyboard, I2C touchpad, light sensor and battery are wired up.
 
 ## Before you use this
